@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="200" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InformationController">
+    <TableView fx:id="logInfo">
+        <columns>
+            <TableColumn text="ID" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="logType"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="First Name" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="message"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email Address" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="time"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>
