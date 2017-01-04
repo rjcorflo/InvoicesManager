@@ -1,5 +1,8 @@
 package model.log;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -24,30 +27,39 @@ public class Log
         }
     }
 
-    private Type logType;
+    private SimpleObjectProperty<Log.Type> logType;
 
-    private String message;
+    private SimpleStringProperty logMessage;
 
-    private LocalDateTime time;
+    private SimpleObjectProperty<LocalDateTime> time;
 
     public Log(Type logType, String message, LocalDateTime localDateTime) {
-        this.logType = logType;
-        this.message = message;
-        this.time = localDateTime;
+        this.logType = new SimpleObjectProperty<Type>(logType);
+        this.logMessage = new SimpleStringProperty(message);
+        this.time= new SimpleObjectProperty<LocalDateTime>(localDateTime);
     }
 
-    public int getType() {
-        return logType.getCodigoLog();
+    public Type getLogType() {
+        return logType.get();
     }
 
-    public String getMessage() {
-        return message;
+    public SimpleObjectProperty<Type> logTypeProperty() {
+        return logType;
     }
 
-    public String getTime() {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM d yyyy  hh:mm");
-        String out = time.format(format);
+    public String getLogMessage() {
+        return logMessage.get();
+    }
 
-        return out;
+    public SimpleStringProperty logMessageProperty() {
+        return logMessage;
+    }
+
+    public LocalDateTime getTime() {
+        return time.get();
+    }
+
+    public SimpleObjectProperty<LocalDateTime> timeProperty() {
+        return time;
     }
 }

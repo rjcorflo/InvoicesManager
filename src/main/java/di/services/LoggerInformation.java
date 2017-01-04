@@ -10,6 +10,11 @@ import java.time.LocalDateTime;
  */
 public class LoggerInformation extends Logger
 {
+    public LoggerInformation() {
+        this.addError("Perro");
+        this.addWarning("Gato");
+        this.addInformation("Ratón");
+    }
 
     @Override
     public void addEntry(Log.Type logType, String message) {

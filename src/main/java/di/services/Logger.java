@@ -1,5 +1,6 @@
 package di.services;
 
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.log.Log;
