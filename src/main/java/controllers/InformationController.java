@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import model.Client;
-import model.Log;
+import model.log.Log;
 import model.repositories.RepositoryClient;
 
 import java.time.LocalDateTime;
@@ -28,6 +28,21 @@ public class InformationController
     private void initialize() {
         logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 1", LocalDateTime.now()));
         logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 2", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
+        logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
         logInfo.getItems().add(new Log(Log.LogType.Error, "Mensaje 3", LocalDateTime.now()));
 
         try {

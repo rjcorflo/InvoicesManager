@@ -8,6 +8,4 @@ public class NIF
     private String firstLetter = "0";
     private String dni;
     private String lastLetter;
-
-
 }

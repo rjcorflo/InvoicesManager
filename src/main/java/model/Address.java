@@ -4,7 +4,7 @@ package model;
  * Created by Solus on 02/01/2017.
  */
 public class Address {
-    private Address street;
+    private String street;
 
     private String postalCode;
 

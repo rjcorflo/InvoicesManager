@@ -11,11 +11,11 @@ public class Client extends User
         super(id);
     }
 
-    public NIF getCifOficial() {
+    public NIF getNifOficial() {
         return nifOficial;
     }
 
-    public void setCifOficial(NIF nifOficial) {
+    public void setNifOficial(NIF nifOficial) {
         this.nifOficial = nifOficial;
     }
 }

@@ -6,6 +6,5 @@ package model;
 public class Phone
 {
     private String prefix;
-
     private String phoneNumber;
 }

@@ -1,4 +1,4 @@
-package model;
+package model.log;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,14 +8,14 @@ import java.time.format.DateTimeFormatter;
  */
 public class Log
 {
-    public enum LogType {
+    public enum Type {
         Error(3),
         Warning(2),
         Information(1);
 
         private int codigoLog;
 
-        private LogType(int codigoLog) {
+        private Type(int codigoLog) {
             this.codigoLog = codigoLog;
         }
 
@@ -24,20 +24,20 @@ public class Log
         }
     }
 
-    private LogType logType;
+    private Type logType;
 
     private String message;
 
     private LocalDateTime time;
 
-    public Log(LogType logType, String message, LocalDateTime localDateTime) {
+    public Log(Type logType, String message, LocalDateTime localDateTime) {
         this.logType = logType;
         this.message = message;
         this.time = localDateTime;
     }
 
-    public int getLogType() {
-        return logType.Error.getCodigoLog();
+    public int getType() {
+        return logType.getCodigoLog();
     }
 
     public String getMessage() {
