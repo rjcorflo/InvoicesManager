@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -85,6 +86,7 @@ public class InformationController
         });
 
         //logMessage.setCellValueFactory(c -> c.getValue().logMessageProperty());
+        logMessage.setCellFactory(TextFieldTableCell.forTableColumn());
 
         logTime.setCellValueFactory(c -> c.getValue().timeProperty());
         logTime.setCellFactory(column -> {
