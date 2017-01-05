@@ -1,7 +1,9 @@
 package imecorpa.model.log;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.time.LocalDateTime;
 
@@ -26,11 +28,11 @@ public class Log
         }
     }
 
-    private SimpleObjectProperty<Log.Type> logType;
+    private ObjectProperty<Type> logType;
 
-    private SimpleStringProperty logMessage;
+    private StringProperty logMessage;
 
-    private SimpleObjectProperty<LocalDateTime> time;
+    private ObjectProperty<LocalDateTime> time;
 
     public Log(Type logType, String message, LocalDateTime localDateTime) {
         this.logType = new SimpleObjectProperty<Type>(logType);
@@ -42,7 +44,7 @@ public class Log
         return logType.get();
     }
 
-    public SimpleObjectProperty<Type> logTypeProperty() {
+    public ObjectProperty<Type> logTypeProperty() {
         return logType;
     }
 
@@ -50,7 +52,7 @@ public class Log
         return logMessage.get();
     }
 
-    public SimpleStringProperty logMessageProperty() {
+    public StringProperty logMessageProperty() {
         return logMessage;
     }
 
@@ -58,7 +60,7 @@ public class Log
         return time.get();
     }
 
-    public SimpleObjectProperty<LocalDateTime> timeProperty() {
+    public ObjectProperty<LocalDateTime> timeProperty() {
         return time;
     }
 }

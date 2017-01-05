@@ -1,35 +1,30 @@
 package imecorpa.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 import javafx.collections.ObservableList;
-
-import java.util.List;
 
 /**
  * Created by Solus on 02/01/2017.
  */
 abstract public class User implements UserInterface
 {
-    private SimpleIntegerProperty id = new SimpleIntegerProperty();
+    private IntegerProperty id = new SimpleIntegerProperty();
 
-    private SimpleObjectProperty<NIF> nif = new SimpleObjectProperty<NIF>();
+    private ObjectProperty<NIF> nif = new SimpleObjectProperty<>();
 
-    private SimpleStringProperty firstName = new SimpleStringProperty();
+    private StringProperty firstName = new SimpleStringProperty();
 
-    private SimpleStringProperty firstLastName = new SimpleStringProperty();
+    private StringProperty firstLastName = new SimpleStringProperty();
 
-    private SimpleStringProperty secondLastName = new SimpleStringProperty();
+    private StringProperty secondLastName = new SimpleStringProperty();
 
-    private SimpleStringProperty email = new SimpleStringProperty();
+    private StringProperty email = new SimpleStringProperty();
 
-    private SimpleListProperty<Address> addresses  = new SimpleListProperty<Address>();
+    private ListProperty<Address> addresses  = new SimpleListProperty<>();
 
-    private SimpleListProperty<Phone> phones  = new SimpleListProperty<Phone>();
+    private ListProperty<Phone> phones  = new SimpleListProperty<>();
 
-    private SimpleObjectProperty<BankData> bankData = new SimpleObjectProperty<BankData>();
+    private ObjectProperty<BankData> bankData = new SimpleObjectProperty<>();
 
     public User(int id)
     {
@@ -42,7 +37,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleIntegerProperty idProperty() {
+    public IntegerProperty idProperty() {
         return id;
     }
 
@@ -57,7 +52,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleObjectProperty<NIF> nifProperty() {
+    public ObjectProperty<NIF> nifProperty() {
         return nif;
     }
 
@@ -72,7 +67,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleStringProperty firstNameProperty() {
+    public StringProperty firstNameProperty() {
         return firstName;
     }
 
@@ -87,7 +82,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleStringProperty firstLastNameProperty() {
+    public StringProperty firstLastNameProperty() {
         return firstLastName;
     }
 
@@ -102,7 +97,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleStringProperty secondLastNameProperty() {
+    public StringProperty secondLastNameProperty() {
         return secondLastName;
     }
 
@@ -117,7 +112,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleStringProperty emailProperty() {
+    public StringProperty emailProperty() {
         return email;
     }
 
@@ -132,7 +127,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleListProperty<Address> addressesProperty() {
+    public ListProperty<Address> addressesProperty() {
         return addresses;
     }
 
@@ -147,7 +142,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleListProperty<Phone> phonesProperty() {
+    public ListProperty<Phone> phonesProperty() {
         return phones;
     }
 
@@ -162,7 +157,7 @@ abstract public class User implements UserInterface
     }
 
     @Override
-    public SimpleObjectProperty<BankData> bankDataProperty() {
+    public ObjectProperty<BankData> bankDataProperty() {
         return bankData;
     }
 

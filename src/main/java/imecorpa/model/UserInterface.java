@@ -1,12 +1,10 @@
 package imecorpa.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
-
-import java.util.List;
 
 /**
  * Created by Solus on 02/01/2017.
@@ -15,55 +13,55 @@ public interface UserInterface
 {
     int getId();
 
-    SimpleIntegerProperty idProperty();
+    IntegerProperty idProperty();
 
     void setId(int id);
 
     NIF getNif();
 
-    SimpleObjectProperty<NIF> nifProperty();
+    ObjectProperty<NIF> nifProperty();
 
     void setNif(NIF nif);
 
     String getFirstName();
 
-    SimpleStringProperty firstNameProperty();
+    StringProperty firstNameProperty();
 
     void setFirstName(String firstName);
 
     String getFirstLastName();
 
-    SimpleStringProperty firstLastNameProperty();
+    StringProperty firstLastNameProperty();
 
     void setFirstLastName(String firstLastName);
 
     String getSecondLastName();
 
-    SimpleStringProperty secondLastNameProperty();
+    StringProperty secondLastNameProperty();
 
     void setSecondLastName(String secondLastName);
 
     String getEmail();
 
-    SimpleStringProperty emailProperty();
+    StringProperty emailProperty();
 
     void setEmail(String email);
 
     ObservableList<Address> getAddresses();
 
-    SimpleListProperty<Address> addressesProperty();
+    ListProperty<Address> addressesProperty();
 
     void setAddresses(ObservableList<Address> addresses);
 
     ObservableList<Phone> getPhones();
 
-    SimpleListProperty<Phone> phonesProperty();
+    ListProperty<Phone> phonesProperty();
 
     void setPhones(ObservableList<Phone> phones);
 
     BankData getBankData();
 
-    SimpleObjectProperty<BankData> bankDataProperty();
+    ObjectProperty<BankData> bankDataProperty();
 
     void setBankData(BankData bankData);
 }
