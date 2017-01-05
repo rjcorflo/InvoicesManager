@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="200" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.controllers.InformationController">
-    <TableView fx:id="logInfo" editable="true" maxWidth="1.7976931348623157E308" tableMenuButtonVisible="true">
+    <TableView fx:id="logInfo" maxWidth="1.7976931348623157E308" tableMenuButtonVisible="true">
         <columns>
             <TableColumn fx:id="logTypeColumn" maxWidth="500.0" minWidth="100.0" prefWidth="150.0" text="%view.information.type">
             </TableColumn>
