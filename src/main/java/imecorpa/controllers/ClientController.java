@@ -5,6 +5,8 @@ import imecorpa.di.services.logger.LoggerService;
 import imecorpa.model.Client;
 import imecorpa.model.repositories.RepositoryClient;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -62,5 +64,27 @@ public class ClientController
         this.tableColumnName.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().firstNameProperty());
 
         this.tableColumnLastname.setCellValueFactory(c -> Bindings.concat(c.getValue().firstLastNameProperty(), " ", c.getValue().secondLastNameProperty()));
+
+        this.clientList.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        this.addEditClientView();
+                    } else {
+                        this.removeEditClientView();
+                    }
+                }
+        );
+    }
+
+    private void addEditClientView() {
+        if (!this.clientRoot.getChildren().contains(this.clientEdit)) {
+            this.clientRoot.getChildren().add(this.clientEdit);
+        }
+    }
+
+    private void removeEditClientView() {
+        if (this.clientRoot.getChildren().contains(this.clientEdit)) {
+            this.clientRoot.getChildren().remove(this.clientEdit);
+        }
     }
 }
