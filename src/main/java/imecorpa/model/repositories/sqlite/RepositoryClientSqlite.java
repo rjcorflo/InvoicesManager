@@ -10,6 +10,8 @@ import imecorpa.model.repositories.RepositoryClient;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Solus on 02/01/2017.
@@ -44,6 +46,13 @@ public class RepositoryClientSqlite implements RepositoryClient
     @Override
     public Client getByIdFactura(int idFactura) {
         return null;
+    }
+
+    @Override
+    public List<Client> getAll() throws SQLException {
+        List<ClientDao> listDao = this.dao.queryForAll();
+        List<Client> listClients = listDao.stream().map(this::adaptFromClientDao).collect(Collectors.toList());
+        return listClients;
     }
 
     private Client adaptFromClientDao(ClientDao clientDao) {
