@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<HBox fx:id="clientRoot" fx:controller="imecorpa.controllers.ClientController" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+
+<HBox fx:id="clientRoot" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.controllers.ClientController">
    <children>
       <TableView fx:id="clientList" prefWidth="500">
         <columns>
-            <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="tableColumnName" prefWidth="150" text="Nombre" />
-            <TableColumn fx:id="tableColumnLastname" prefWidth="300" text="Apellidos" />
+            <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="%default.id" />
+            <TableColumn fx:id="tableColumnName" prefWidth="150" text="%default.name" />
+            <TableColumn fx:id="tableColumnLastname" prefWidth="300" text="%default.lastname" />
+            <TableColumn fx:id="tableColumnNif" prefWidth="75.0" text="%default.nif" />
+            <TableColumn fx:id="tableColumnEmail" prefWidth="75.0" text="%default.email" />
         </columns>
       </TableView>
       <TitledPane fx:id="clientEdit" alignment="TOP_LEFT" collapsible="false" prefHeight="434.0" prefWidth="500" text="Usuario" GridPane.columnIndex="1">

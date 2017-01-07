@@ -5,8 +5,6 @@ import imecorpa.di.services.logger.LoggerService;
 import imecorpa.model.Client;
 import imecorpa.model.repositories.RepositoryClient;
 import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,15 +22,19 @@ public class ClientController
 {
     @FXML private HBox clientRoot;
 
-    @FXML private TitledPane clientEdit;
-
     @FXML private TableView<Client> clientList;
+
+    @FXML private TitledPane clientEdit;
 
     @FXML private TableColumn<Client,Number> tableColumnId;
 
     @FXML private TableColumn<Client,String> tableColumnName;
 
     @FXML private TableColumn<Client,String> tableColumnLastname;
+
+    @FXML private TableColumn<Client,String> tableColumnEmail;
+
+    @FXML private TableColumn<Client, String> tableColumnNif;
 
     private ObservableList<Client> observableList;
 
@@ -41,13 +43,15 @@ public class ClientController
     private LoggerService loggerService;
 
     @Inject
-    public ClientController(RepositoryClient repository, LoggerService loggerService) {
+    public ClientController(RepositoryClient repository, LoggerService loggerService)
+    {
         this.repositoryClient = repository;
         this.loggerService = loggerService;
     }
 
     @FXML
-    private void initialize() throws SQLException {
+    private void initialize() throws SQLException
+    {
         this.clientRoot.getChildren().remove(this.clientEdit);
         this.clientList.setPrefWidth(1000);
 
@@ -58,12 +62,17 @@ public class ClientController
         this.clientList.setItems(this.observableList);
     }
 
-    private void initializeTableView() {
+    private void initializeTableView()
+    {
         this.tableColumnId.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().idProperty());
 
         this.tableColumnName.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().firstNameProperty());
 
-        this.tableColumnLastname.setCellValueFactory(c -> Bindings.concat(c.getValue().firstLastNameProperty(), " ", c.getValue().secondLastNameProperty()));
+        this.tableColumnLastname.setCellValueFactory(cellDataFeatures -> Bindings.concat(cellDataFeatures.getValue().firstLastNameProperty(), " ", cellDataFeatures.getValue().secondLastNameProperty()));
+
+        this.tableColumnNif.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nifProperty().getValue().nifProperty());
+
+        this.tableColumnEmail.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().emailProperty());
 
         this.clientList.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
@@ -76,7 +85,8 @@ public class ClientController
         );
     }
 
-    private void addEditClientView() {
+    private void addEditClientView()
+    {
         if (!this.clientRoot.getChildren().contains(this.clientEdit)) {
             this.clientRoot.getChildren().add(this.clientEdit);
         }
