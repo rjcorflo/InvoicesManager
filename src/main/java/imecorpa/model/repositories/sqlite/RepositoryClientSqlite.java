@@ -6,6 +6,7 @@ import com.j256.ormlite.dao.DaoManager;
 import imecorpa.database.connectivity.DatabaseConnection;
 import imecorpa.database.data.ClientDao;
 import imecorpa.model.Client;
+import imecorpa.model.NIF;
 import imecorpa.model.repositories.RepositoryClient;
 
 import java.io.IOException;
@@ -51,8 +52,7 @@ public class RepositoryClientSqlite implements RepositoryClient
     @Override
     public List<Client> getAll() throws SQLException {
         List<ClientDao> listDao = this.dao.queryForAll();
-        List<Client> listClients = listDao.stream().map(this::adaptFromClientDao).collect(Collectors.toList());
-        return listClients;
+        return listDao.stream().map(this::adaptFromClientDao).collect(Collectors.toList());
     }
 
     private Client adaptFromClientDao(ClientDao clientDao) {
@@ -60,12 +60,12 @@ public class RepositoryClientSqlite implements RepositoryClient
         client.setFirstName(clientDao.getNombre_cliente());
         client.setFirstLastName(clientDao.getApellido1_cliente());
         client.setSecondLastName(clientDao.getApellido2_cliente());
+        client.setNif(new NIF(clientDao.getCif()));
 
         return client;
     }
 
     private ClientDao adaptFromClient(Client client) {
-        ClientDao clientDao = new ClientDao();
-        return clientDao;
+        return new ClientDao();
     }
 }

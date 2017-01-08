@@ -23,8 +23,8 @@ public class DatabaseConnection
 
     public ConnectionSource getConnection() throws SQLException {
         if (connectionSource == null) {
-            String databaseUrl = this.configuration.getValue("databaseUrl", "jdbc:sqlite:D:\\Ravier\\Workspace\\JavaProjects\\imecorpa.db");
-            connectionSource = new JdbcConnectionSource(databaseUrl);
+            String databaseUrl = this.configuration.getValue("databaseUrl");
+            connectionSource = new JdbcConnectionSource("jdbc:sqlite:" + databaseUrl);
         }
 
         return connectionSource;
