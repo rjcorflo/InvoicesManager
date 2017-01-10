@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.control.ToggleButton?>
-<BorderPane fx:id="idPane" xmlns:fx="http://www.w3.org/2001/XMLSchema" fx:controller="imecorpa.controllers.MainController">
+
+<BorderPane fx:id="idPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="imecorpa.controllers.MainController">
     <top>
-        <HBox xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+        <HBox fillHeight="false" prefHeight="50.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
             <fx:define>
-                <ToggleGroup fx:id="myToggleGroup"/>
+                <ToggleGroup fx:id="myToggleGroup" />
             </fx:define>
             <children>
-                <ToggleButton onAction="#activeClient" layoutX="44.0" selected="true" mnemonicParsing="false" text="%button.client" toggleGroup="$myToggleGroup"/>
-                <ToggleButton onAction="#activeProvider" layoutY="1.0" mnemonicParsing="false" text="%button.provider" toggleGroup="$myToggleGroup"/>
+                <ToggleButton layoutX="44.0" mnemonicParsing="false" onAction="#activeClient" selected="true" text="%button.client">
+               <toggleGroup>
+                  <ToggleGroup fx:id="myToggleGroup" />
+               </toggleGroup></ToggleButton>
+                <ToggleButton layoutY="1.0" mnemonicParsing="false" onAction="#activeProvider" text="%button.provider" toggleGroup="$myToggleGroup" />
             </children>
         </HBox>
     </top>
     <left>
-        <fx:include source="AddressView.fxml"/>
+        <fx:include source="AddressView.fxml" />
     </left>
     <center>
-        <fx:include source="clients/ClientView.fxml"/>
+        <fx:include source="clients/ClientView.fxml" />
     </center>
     <right>
-        <fx:include source="SearchView.fxml"/>
+        <fx:include source="SearchView.fxml" />
     </right>
     <bottom>
-        <fx:include source="InformationView.fxml"/>
+        <fx:include source="InformationView.fxml" />
     </bottom>
 </BorderPane>

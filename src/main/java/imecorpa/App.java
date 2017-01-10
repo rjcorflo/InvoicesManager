@@ -22,8 +22,6 @@ public class App extends Application
 
     private static Locale locale;
 
-    private static FXMLLoader fxmlLoader;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Module module = Modules.combine(new ConfigurationModule(), new RepositoryModule());
