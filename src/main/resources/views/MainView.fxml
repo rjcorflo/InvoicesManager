@@ -20,7 +20,7 @@
         <fx:include source="AddressView.fxml"/>
     </left>
     <center>
-        <fx:include source="ClientView.fxml"/>
+        <fx:include source="clients/ClientView.fxml"/>
     </center>
     <right>
         <fx:include source="SearchView.fxml"/>

@@ -3,6 +3,8 @@ package imecorpa.configuration.file;
 import imecorpa.configuration.Configuration;
 
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Properties;
 
 /**
@@ -12,11 +14,14 @@ public class FileConfiguration implements Configuration
 {
     private Properties prop = new Properties();
 
-    public FileConfiguration() {
-        File file = new File("config.properties");
-        if (!file.exists()) {
+    private File propFile;
+
+    public FileConfiguration() throws URISyntaxException {
+        URL url = getClass().getResource("/configuration/config.properties");
+        propFile = new File(url.toURI());
+        if (!propFile.exists()) {
             try {
-                file.createNewFile();
+                propFile.createNewFile();
             } catch (Exception e) {
                 System.out.println("Error loading");
             }
@@ -44,7 +49,7 @@ public class FileConfiguration implements Configuration
         InputStream input = null;
 
         try {
-            input = new FileInputStream("config.properties");
+            input = new FileInputStream(propFile);
 
             // load a properties file
             prop.load(input);
@@ -64,9 +69,9 @@ public class FileConfiguration implements Configuration
     protected void store() {
         OutputStream output = null;
         try {
-            output = new FileOutputStream("config.properties");
+            output = new FileOutputStream(propFile);
 
-            // save properties to project root folder
+            // Save properties to project root folder
             prop.store(output, null);
 
         } catch (IOException io) {

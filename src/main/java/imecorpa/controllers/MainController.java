@@ -2,6 +2,7 @@ package imecorpa.controllers;
 
 import com.google.inject.Inject;
 import imecorpa.configuration.Configuration;
+import imecorpa.configuration.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,13 +40,13 @@ public class MainController {
     }
 
     public void activeClient(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = App.getFxmlLoader("ClientView");
+        FXMLLoader loader = App.getFxmlLoader(View.ClientView);
 
         this.idPane.setCenter(loader.load());
     }
 
     public void activeProvider(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = App.getFxmlLoader("ProviderView");
+        FXMLLoader loader = App.getFxmlLoader(View.ProviderView);
 
         this.idPane.setCenter(loader.load());
     }
