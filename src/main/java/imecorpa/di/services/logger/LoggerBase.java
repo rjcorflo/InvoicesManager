@@ -2,12 +2,11 @@ package imecorpa.di.services.logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import imecorpa.model.log.Log;
 
 /**
  * Created by Solus on 04/01/2017.
  */
-abstract public class LoggerBase implements LoggerService
+abstract class LoggerBase implements LoggerService
 {
     protected ObservableList<Log> logObservableList = FXCollections.observableArrayList();
 

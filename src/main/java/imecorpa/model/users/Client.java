@@ -1,5 +1,6 @@
-package imecorpa.model;
+package imecorpa.model.users;
 
+import imecorpa.model.NIF;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 

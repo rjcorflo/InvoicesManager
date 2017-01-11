@@ -1,13 +1,12 @@
-package imecorpa.model.repositories.sqlite;
+package imecorpa.model.repositories;
 
 import com.google.inject.Inject;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import imecorpa.database.connectivity.DatabaseConnection;
 import imecorpa.database.data.ClientDao;
-import imecorpa.model.Client;
+import imecorpa.model.users.Client;
 import imecorpa.model.NIF;
-import imecorpa.model.repositories.RepositoryClient;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,12 +16,12 @@ import java.util.stream.Collectors;
 /**
  * Created by Solus on 02/01/2017.
  */
-public class RepositoryClientSqlite implements RepositoryClient
+class RepositoryClientSqlite implements RepositoryClient
 {
     private Dao<ClientDao, String> dao;
 
     @Inject
-    public RepositoryClientSqlite(DatabaseConnection connectionSource) throws SQLException, IOException {
+    RepositoryClientSqlite(DatabaseConnection connectionSource) throws SQLException, IOException {
         dao = DaoManager.createDao(connectionSource.getConnection(), ClientDao.class);
     }
 

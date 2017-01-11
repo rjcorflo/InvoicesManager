@@ -7,9 +7,12 @@ import java.util.ResourceBundle;
 /**
  * Created by Solus on 05/01/2017.
  */
-public class TranslatorResource implements TranslatorService
+class TranslatorResource implements TranslatorService
 {
-    protected ResourceBundle resourceBundle;
+    private ResourceBundle resourceBundle;
+
+    TranslatorResource() {
+    }
 
     @Override
     public String translate(String key) {

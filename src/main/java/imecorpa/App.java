@@ -3,10 +3,8 @@ package imecorpa;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.google.inject.util.Modules;
 import imecorpa.configuration.View;
-import imecorpa.di.module.ConfigurationModule;
-import imecorpa.di.module.RepositoryModule;
+import imecorpa.di.modules.ProductionModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,11 +21,18 @@ public class App extends Application
     private static Locale locale;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Module module = Modules.combine(new ConfigurationModule(), new RepositoryModule());
-        App.setInjector(Guice.createInjector(module));
-        App.setLocale(Locale.getDefault());
+    public void init() throws Exception {
+        super.init();
+        // Init injector
+        Module module = new ProductionModule();
+        App.injector = Guice.createInjector(module);
 
+        // Init default locale
+        App.setLocale(Locale.getDefault());
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
         Parent root = App.getFxmlLoader(View.MainView).load();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
@@ -37,19 +42,6 @@ public class App extends Application
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public static Injector getInjector() {
-        if (App.injector == null) {
-            Module module = Modules.combine(new ConfigurationModule(), new RepositoryModule());
-            App.injector = Guice.createInjector(module);
-        }
-
-        return App.injector;
-    }
-
-    public static void setInjector(Injector injector) {
-        App.injector = injector;
     }
 
     public static Locale getLocale() {

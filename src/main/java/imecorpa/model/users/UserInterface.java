@@ -1,5 +1,9 @@
-package imecorpa.model;
+package imecorpa.model.users;
 
+import imecorpa.model.Address;
+import imecorpa.model.BankData;
+import imecorpa.model.NIF;
+import imecorpa.model.Phone;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;

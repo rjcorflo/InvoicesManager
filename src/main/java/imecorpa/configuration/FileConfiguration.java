@@ -1,4 +1,4 @@
-package imecorpa.configuration.file;
+package imecorpa.configuration;
 
 import imecorpa.configuration.Configuration;
 
@@ -10,13 +10,13 @@ import java.util.Properties;
 /**
  * Created by Solus on 02/01/2017.
  */
-public class FileConfiguration implements Configuration
+class FileConfiguration implements Configuration
 {
     private Properties prop = new Properties();
 
     private File propFile;
 
-    public FileConfiguration() throws URISyntaxException {
+    FileConfiguration() throws URISyntaxException {
         URL url = getClass().getResource("/configuration/config.properties");
         propFile = new File(url.toURI());
         if (!propFile.exists()) {

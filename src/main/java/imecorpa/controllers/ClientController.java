@@ -2,7 +2,7 @@ package imecorpa.controllers;
 
 import com.google.inject.Inject;
 import imecorpa.di.services.logger.LoggerService;
-import imecorpa.model.Client;
+import imecorpa.model.users.Client;
 import imecorpa.model.repositories.RepositoryClient;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;

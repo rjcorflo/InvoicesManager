@@ -1,6 +1,6 @@
 package imecorpa.model.repositories;
 
-import imecorpa.model.Client;
+import imecorpa.model.users.Client;
 
 import java.sql.SQLException;
 import java.util.List;

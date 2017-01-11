@@ -1,19 +1,15 @@
 package imecorpa.di.services.logger;
 
 import javafx.collections.ObservableList;
-import imecorpa.model.log.Log;
 
 import java.time.LocalDateTime;
 
 /**
  * Created by Solus on 04/01/2017.
  */
-public class LoggerInformation extends LoggerBase
+class LoggerInformation extends LoggerBase
 {
-    public LoggerInformation() {
-        this.addError("Perro");
-        this.addWarning("Gato");
-        this.addInformation("Ratón");
+    void LoggerInformation() {
     }
 
     @Override

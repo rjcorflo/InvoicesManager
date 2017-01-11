@@ -1,8 +1,8 @@
-package imecorpa.di.module;
+package imecorpa.model.repositories;
 
 import com.google.inject.AbstractModule;
 import imecorpa.model.repositories.RepositoryClient;
-import imecorpa.model.repositories.sqlite.RepositoryClientSqlite;
+import imecorpa.model.repositories.RepositoryClientSqlite;
 
 /**
  * Created by Solus on 03/01/2017.

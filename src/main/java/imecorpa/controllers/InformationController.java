@@ -2,9 +2,8 @@ package imecorpa.controllers;
 
 import com.google.inject.Inject;
 import imecorpa.di.services.logger.LoggerService;
-import imecorpa.di.services.translator.TranslatorService;
-import imecorpa.model.Client;
-import imecorpa.model.log.Log;
+import imecorpa.model.users.Client;
+import imecorpa.di.services.logger.Log;
 import imecorpa.model.repositories.RepositoryClient;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
@@ -14,7 +13,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
 
 /**
  * Created by Solus on 03/01/2017.

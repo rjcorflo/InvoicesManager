@@ -1,4 +1,4 @@
-package imecorpa.model.log;
+package imecorpa.di.services.logger;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

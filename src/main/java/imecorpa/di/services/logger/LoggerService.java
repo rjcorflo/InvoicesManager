@@ -1,7 +1,5 @@
 package imecorpa.di.services.logger;
 
-import imecorpa.model.log.Log;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
