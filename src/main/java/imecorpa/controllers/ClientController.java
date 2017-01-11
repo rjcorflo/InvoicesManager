@@ -1,9 +1,8 @@
 package imecorpa.controllers;
 
-import com.google.inject.Inject;
 import imecorpa.di.services.logger.LoggerService;
-import imecorpa.model.users.Client;
 import imecorpa.model.repositories.RepositoryClient;
+import imecorpa.model.users.Client;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.HBox;
 
+import javax.inject.Inject;
 import java.sql.SQLException;
 
 /**

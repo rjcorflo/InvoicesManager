@@ -1,6 +1,5 @@
 package imecorpa.controllers;
 
-import com.google.inject.Inject;
 import imecorpa.configuration.Configuration;
 import imecorpa.configuration.View;
 import javafx.event.ActionEvent;
@@ -11,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import imecorpa.App;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 public class MainController {

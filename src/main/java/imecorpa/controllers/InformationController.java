@@ -1,6 +1,5 @@
 package imecorpa.controllers;
 
-import com.google.inject.Inject;
 import imecorpa.di.services.logger.LoggerService;
 import imecorpa.model.users.Client;
 import imecorpa.di.services.logger.Log;
@@ -11,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
 
+import javax.inject.Inject;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

@@ -1,13 +1,13 @@
 package imecorpa.model.repositories;
 
-import com.google.inject.Inject;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import imecorpa.database.connectivity.DatabaseConnection;
 import imecorpa.database.data.ClientDao;
-import imecorpa.model.users.Client;
 import imecorpa.model.NIF;
+import imecorpa.model.users.Client;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;

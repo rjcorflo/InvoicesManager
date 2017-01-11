@@ -1,10 +1,10 @@
 package imecorpa.database.connectivity;
 
-import com.google.inject.Inject;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import imecorpa.configuration.Configuration;
 
+import javax.inject.Inject;
 import java.sql.SQLException;
 
 /**
