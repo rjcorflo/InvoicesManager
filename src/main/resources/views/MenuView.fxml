@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToggleButton?>
-<HBox fillHeight="false" prefHeight="50.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.controllers.MenuController">
+<HBox fillHeight="false" prefHeight="50.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.app.MenuController">
     <fx:define>
         <ToggleGroup fx:id="myToggleGroup" />
     </fx:define>

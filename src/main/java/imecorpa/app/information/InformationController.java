@@ -1,4 +1,4 @@
-package imecorpa.controllers;
+package imecorpa.app.information;
 
 import imecorpa.di.services.logger.LoggerService;
 import imecorpa.model.users.Client;

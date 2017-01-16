@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -29,31 +30,34 @@ public class ClientController
 
     @FXML
     private void initialize() {
+        context.setView(ClientContext.VIEW_LIST);
         context.setClient(Optional.empty());
 
         context.clientProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.isPresent()) {
-                try {
-                    this.showEditClientView(newValue.get());
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
-                }
+            try {
+                this.showEditClientView(newValue);
+            } catch (IOException e) {
             }
         });
     }
 
     public void showListClientView() throws IOException {
         FXMLLoader loader = App.getFxmlLoader(View.ListClientView);
-        ListClientController controller = loader.getController();
         this.clientRoot.getChildren().add(loader.load());
     }
 
-    public void showEditClientView(Client client) throws IOException {
-        FXMLLoader loader = App.getFxmlLoader(View.EditClientView);
+    public void showEditClientView(Optional<Client> client) throws IOException {
+        // Set client in context
+        this.context.setClient(client);
 
-        this.clientRoot.getChildren().add(loader.load());
+        // Load edit view
+        if (client.isPresent() && this.clientRoot.getChildren().size() < 2) {
+            FXMLLoader loader = App.getFxmlLoader(View.EditClientView);
+            this.clientRoot.getChildren().add(loader.load());
+        }
 
-        EditClientController controller = loader.getController();
-        controller.loadClient(client);
+        if (!client.isPresent() && this.clientRoot.getChildren().size() == 2) {
+            this.clientRoot.getChildren().remove(1);
+        }
     }
 }

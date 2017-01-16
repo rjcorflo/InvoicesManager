@@ -13,8 +13,8 @@ import java.util.Optional;
  */
 public class ClientContext
 {
-    public final String VIEW_LIST = "list";
-    public final String VIEW_DATA = "data";
+    public static final String VIEW_LIST = "list";
+    public static final String VIEW_DATA = "data";
 
     private StringProperty view = new SimpleStringProperty();
 
