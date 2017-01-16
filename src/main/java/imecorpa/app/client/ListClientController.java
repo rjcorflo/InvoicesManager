@@ -1,14 +1,9 @@
 package imecorpa.app.client;
 
-import com.google.common.eventbus.EventBus;
-import imecorpa.events.ChangeViewEvent;
 import imecorpa.model.repositories.RepositoryClient;
 import imecorpa.model.users.Client;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -22,13 +17,16 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Created by Solus on 05/01/2017.
+ * Controller for {@link Client clients} list.
+ *
+ * Controls edition and creation of users. Also controls filter of clients.
+ *
  */
 public class ListClientController
 {
     @FXML private VBox clientList;
 
-    public TableView<Client> tableClient;
+    @FXML private TableView<Client> tableClient;
 
     @FXML private TableColumn<Client,Number> tableColumnId;
 
@@ -40,8 +38,14 @@ public class ListClientController
 
     @FXML private TableColumn<Client, String> tableColumnNif;
 
+    /**
+     * Repository of {@link Client Clients}.
+     */
     private RepositoryClient repositoryClient;
 
+    /**
+     * Context for client controllers and views.
+     */
     private ClientContext clientContext;
 
 
@@ -63,6 +67,7 @@ public class ListClientController
 
     private void initializeTableView()
     {
+        // Change context client on double click for edition
         this.tableClient.setRowFactory(tv -> {
             TableRow<Client> tr = new TableRow<>();
             tr.setOnMouseClicked(mouseEvent -> {
@@ -73,6 +78,7 @@ public class ListClientController
             return tr;
         });
 
+        // Data association
         this.tableColumnId.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().idProperty());
 
         this.tableColumnName.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().firstNameProperty());
@@ -84,13 +90,15 @@ public class ListClientController
         this.tableColumnEmail.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().emailProperty());
     }
 
-    public void editClient(ActionEvent actionEvent) {
-        Optional<Client> selectedClient = Optional.ofNullable(this.tableClient.getSelectionModel().getSelectedItem());
-        this.clientContext.setClient(selectedClient);
-    }
-
-    public void addClient(ActionEvent actionEvent) {
+    @FXML
+    private void addClient(ActionEvent actionEvent) {
         Optional<Client> newClient = Optional.of(new Client());
         this.clientContext.setClient(newClient);
+    }
+
+    @FXML
+    private void editClient(ActionEvent actionEvent) {
+        Optional<Client> selectedClient = Optional.ofNullable(this.tableClient.getSelectionModel().getSelectedItem());
+        this.clientContext.setClient(selectedClient);
     }
 }

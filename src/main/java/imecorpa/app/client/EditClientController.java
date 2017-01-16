@@ -43,15 +43,22 @@ public class EditClientController
     @FXML
     private void initialize() throws SQLException
     {
-        this.name.setText( clientContext.getClient().get().getFirstName());
-        this.nif.setText(clientContext.getClient().get().getNif().getNif());
-
+        // Add listeners to change values
         clientContext.clientProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.isPresent()) {
                 this.name.setText(newValue.get().getFirstName());
                 this.nif.setText(newValue.get().getNif().getNif());
             }
         });
+
+        this.loadData();
+    }
+
+    private void loadData() {
+        if (this.clientContext.getClient().isPresent()) {
+            this.name.setText(clientContext.getClient().get().getFirstName());
+            this.nif.setText(clientContext.getClient().get().getNif().getNif());
+        }
     }
 
     public void saveClient(ActionEvent actionEvent) {
@@ -59,12 +66,15 @@ public class EditClientController
         client.setFirstName(this.name.getText());
         client.getNif().setNif(this.nif.getText());
 
+        // TODO persist data
+
         if (!clientContext.getClientList().contains(client)) {
             clientContext.getClientList().add(client);
         }
     }
 
     public void cancelEditClient(ActionEvent actionEvent) {
+        // Set client in context as empty to close edition view
         clientContext.clientProperty().set(Optional.empty());
     }
 }

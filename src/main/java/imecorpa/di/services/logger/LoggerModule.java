@@ -3,7 +3,7 @@ package imecorpa.di.services.logger;
 import com.google.inject.AbstractModule;
 
 /**
- * Created by RJ Corchero on 11/01/2017.
+ * Guice Module for Logger Service.
  */
 public class LoggerModule extends AbstractModule
 {

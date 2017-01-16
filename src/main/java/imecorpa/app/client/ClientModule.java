@@ -4,7 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 
 /**
- * Created by RJ Corchero on 16/01/2017.
+ * Guice Module for Client Section.
  */
 public class ClientModule extends AbstractModule {
     @Override

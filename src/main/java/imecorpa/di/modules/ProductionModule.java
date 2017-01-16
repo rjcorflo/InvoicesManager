@@ -11,7 +11,9 @@ import imecorpa.model.repositories.RepositoryModule;
 import javax.inject.Singleton;
 
 /**
- * Created by RJ Corchero on 11/01/2017.
+ * Guice Module for Production Environment.
+ *
+ * Combines all other modules to create the App Object Graph.
  */
 public class ProductionModule extends AbstractModule
 {

@@ -1,39 +1,29 @@
 package imecorpa.app.client;
 
 import imecorpa.model.users.Client;
-import javafx.beans.property.*;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Observable;
 import java.util.Optional;
 
 /**
- * Created by RJ Corchero on 16/01/2017.
+ * Context for properties to share between Client controllers and views
  */
 public class ClientContext
 {
-    public static final String VIEW_LIST = "list";
-    public static final String VIEW_DATA = "data";
-
-    private StringProperty view = new SimpleStringProperty();
-
+    /**
+     * The client to work with. Optional.empty() if there are no client to work.
+     */
     private ObjectProperty<Optional<Client>> client = new SimpleObjectProperty<>();
 
+    /**
+     * List of clients in the App.
+     */
     private ListProperty<Client> clientList = new SimpleListProperty<>(FXCollections.emptyObservableList());
-
-    public String getView() {
-        return view.get();
-    }
-
-    public StringProperty viewProperty() {
-        return view;
-    }
-
-    public void setView(String view) {
-        this.view.set(view);
-    }
-
 
     public Optional<Client> getClient() {
         return client.get();

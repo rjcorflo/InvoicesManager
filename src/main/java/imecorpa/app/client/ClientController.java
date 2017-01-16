@@ -2,12 +2,14 @@ package imecorpa.app.client;
 
 import imecorpa.App;
 import imecorpa.configuration.View;
+import imecorpa.di.services.logger.LoggerService;
 import imecorpa.model.users.Client;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
@@ -19,47 +21,70 @@ import java.util.Optional;
  */
 public class ClientController
 {
-    private ClientContext context;
-
     @FXML private HBox clientRoot;
 
+    /**
+     * Logger servide to control data information
+     */
+    private LoggerService loggerService;
+
+    /**
+     * Context for client controllers and views
+     */
+    private ClientContext clientContext;
+
     @Inject
-    public ClientController(ClientContext context) {
-        this.context = context;
+    public ClientController(ClientContext context, LoggerService loggerService) {
+        this.clientContext = context;
+        this.loggerService = loggerService;
     }
 
     @FXML
     private void initialize() {
-        context.setView(ClientContext.VIEW_LIST);
-        context.setClient(Optional.empty());
+        clientContext.setClient(Optional.empty());
 
-        context.clientProperty().addListener((observable, oldValue, newValue) -> {
+        clientContext.clientProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 this.showEditClientView(newValue);
             } catch (IOException e) {
-                e.printStackTrace();
+                loggerService.addError(e.getMessage());
             }
         });
     }
 
+    /**
+     * Show client list view
+     *
+     * @throws IOException
+     */
     public void showListClientView() throws IOException {
         FXMLLoader loader = App.getFxmlLoader(View.ListClientView);
-        this.clientRoot.getChildren().add(loader.load());
+        clientRoot.getChildren().clear();
+        clientRoot.getChildren().add(loader.load());
     }
 
+    /**
+     * Show client edition view
+     *
+     * @param client The client to edit
+     * @throws IOException If there is a problem instantiating FXML
+     */
     public void showEditClientView(Optional<Client> client) throws IOException {
         // Set client in context
-        this.context.setClient(client);
+        clientContext.setClient(client);
 
-        // Load edit view
-        if (client.isPresent() && this.clientRoot.getChildren().size() < 2) {
+        // Load edit view if necessary
+        if (client.isPresent()) {
             FXMLLoader loader = App.getFxmlLoader(View.EditClientView);
-            this.clientRoot.getChildren().add(loader.load());
+            Pane view = loader.load();
+            if (clientRoot.getChildren().stream().noneMatch(node -> view.getId().equals(node.getId()))) {
+                clientRoot.getChildren().add(view);
+            }
+        } else {
+            // Remove edit view if necessary
+            clientRoot.getChildren().removeIf(node -> node.getId().equals("clientEdit"));
         }
 
-        if (!client.isPresent() && this.clientRoot.getChildren().size() == 2) {
-            this.clientRoot.getChildren().remove(1);
-        }
     }
 
     public void showDataClientView(Optional<Client> client) {
