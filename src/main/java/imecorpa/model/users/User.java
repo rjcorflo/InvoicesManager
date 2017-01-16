@@ -14,7 +14,7 @@ abstract public class User implements UserInterface
 {
     private IntegerProperty id = new SimpleIntegerProperty();
 
-    private ObjectProperty<NIF> nif = new SimpleObjectProperty<>();
+    private ObjectProperty<NIF> nif = new SimpleObjectProperty<>(new NIF(""));
 
     private StringProperty firstName = new SimpleStringProperty();
 
@@ -29,6 +29,9 @@ abstract public class User implements UserInterface
     private ListProperty<Phone> phones  = new SimpleListProperty<>();
 
     private ObjectProperty<BankData> bankData = new SimpleObjectProperty<>();
+
+    public User() {
+    }
 
     public User(int id)
     {

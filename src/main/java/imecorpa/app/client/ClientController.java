@@ -37,6 +37,7 @@ public class ClientController
             try {
                 this.showEditClientView(newValue);
             } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
@@ -59,5 +60,9 @@ public class ClientController
         if (!client.isPresent() && this.clientRoot.getChildren().size() == 2) {
             this.clientRoot.getChildren().remove(1);
         }
+    }
+
+    public void showDataClientView(Optional<Client> client) {
+
     }
 }

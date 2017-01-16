@@ -11,6 +11,10 @@ public class Client extends User
 {
     private ObjectProperty<NIF> nifOficial = new SimpleObjectProperty<>();
 
+    public Client() {
+        super();
+    }
+
     public Client(int id) {
         super(id);
     }

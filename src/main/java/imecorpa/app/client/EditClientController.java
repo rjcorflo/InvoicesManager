@@ -1,5 +1,6 @@
 package imecorpa.app.client;
 
+import imecorpa.model.NIF;
 import imecorpa.model.repositories.RepositoryClient;
 import imecorpa.model.users.Client;
 import javafx.beans.binding.Bindings;
@@ -24,6 +25,7 @@ import java.util.Optional;
 public class EditClientController
 {
     @FXML private TextField name;
+    @FXML private TextField nif;
 
     @FXML private VBox clientEdit;
 
@@ -42,17 +44,24 @@ public class EditClientController
     private void initialize() throws SQLException
     {
         this.name.setText( clientContext.getClient().get().getFirstName());
+        this.nif.setText(clientContext.getClient().get().getNif().getNif());
 
         clientContext.clientProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.isPresent()) {
                 this.name.setText(newValue.get().getFirstName());
+                this.nif.setText(newValue.get().getNif().getNif());
             }
         });
     }
 
-    public void editClient(ActionEvent actionEvent) {
+    public void saveClient(ActionEvent actionEvent) {
         Client client = this.clientContext.getClient().get();
         client.setFirstName(this.name.getText());
+        client.getNif().setNif(this.nif.getText());
+
+        if (!clientContext.getClientList().contains(client)) {
+            clientContext.getClientList().add(client);
+        }
     }
 
     public void cancelEditClient(ActionEvent actionEvent) {

@@ -9,6 +9,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -81,5 +82,15 @@ public class ListClientController
         this.tableColumnNif.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nifProperty().getValue().nifProperty());
 
         this.tableColumnEmail.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().emailProperty());
+    }
+
+    public void editClient(ActionEvent actionEvent) {
+        Optional<Client> selectedClient = Optional.ofNullable(this.tableClient.getSelectionModel().getSelectedItem());
+        this.clientContext.setClient(selectedClient);
+    }
+
+    public void addClient(ActionEvent actionEvent) {
+        Optional<Client> newClient = Optional.of(new Client());
+        this.clientContext.setClient(newClient);
     }
 }
