@@ -14,21 +14,21 @@ import javafx.stage.Stage;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class App extends Application
-{
+public class App extends Application {
     private static Injector injector;
 
     private static Locale locale;
 
     @Override
     public void init() throws Exception {
-        super.init();
         // Init injector
         Module module = new ProductionModule();
         App.injector = Guice.createInjector(module);
 
         // Init default locale
         App.setLocale(Locale.getDefault());
+
+        System.out.println("Nueva");
     }
 
     @Override

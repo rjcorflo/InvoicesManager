@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -56,9 +57,12 @@ class RepositoryClientSqlite implements RepositoryClient
 
     private Client adaptFromClientDao(ClientDao clientDao) {
         Client client = new Client(clientDao.getId_cliente());
-        client.setFirstName(clientDao.getNombre_cliente());
-        client.setFirstLastName(clientDao.getApellido1_cliente());
-        client.setSecondLastName(clientDao.getApellido2_cliente());
+        Optional<String> firstName = Optional.ofNullable(clientDao.getNombre_cliente());
+        client.setFirstName(firstName.orElse(""));
+        Optional<String> firstLastName = Optional.ofNullable(clientDao.getApellido1_cliente());
+        client.setFirstLastName(firstLastName.orElse(""));
+        Optional<String> secondLastName = Optional.ofNullable(clientDao.getApellido2_cliente());
+        client.setSecondLastName(secondLastName.orElse(""));
         client.setNif(new NIF(clientDao.getCif()));
 
         return client;

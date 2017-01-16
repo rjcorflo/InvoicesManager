@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToggleButton?>
+<HBox fillHeight="false" prefHeight="50.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.controllers.MenuController">
+    <fx:define>
+        <ToggleGroup fx:id="myToggleGroup" />
+    </fx:define>
+    <children>
+        <ToggleButton layoutX="44.0" mnemonicParsing="false" selected="true" text="%button.client" onAction="#showListView">
+            <toggleGroup>
+                <ToggleGroup fx:id="myToggleGroup" />
+            </toggleGroup></ToggleButton>
+        <ToggleButton layoutY="1.0" mnemonicParsing="false"  text="%button.provider" toggleGroup="$myToggleGroup" />
+    </children>
+</HBox>

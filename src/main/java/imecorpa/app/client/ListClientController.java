@@ -1,30 +1,33 @@
-package imecorpa.controllers;
+package imecorpa.app.client;
 
-import imecorpa.di.services.logger.LoggerService;
+import com.google.common.eventbus.EventBus;
+import imecorpa.events.ChangeViewEvent;
 import imecorpa.model.repositories.RepositoryClient;
 import imecorpa.model.users.Client;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Solus on 05/01/2017.
  */
-public class ClientController
+public class ListClientController
 {
-    @FXML private HBox clientRoot;
+    @FXML private VBox clientList;
 
-    @FXML private TableView<Client> clientList;
-
-    @FXML private TitledPane clientEdit;
+    public TableView<Client> tableClient;
 
     @FXML private TableColumn<Client,Number> tableColumnId;
 
@@ -36,34 +39,39 @@ public class ClientController
 
     @FXML private TableColumn<Client, String> tableColumnNif;
 
-    private ObservableList<Client> observableList;
-
     private RepositoryClient repositoryClient;
 
-    private LoggerService loggerService;
+    private ClientContext clientContext;
+
 
     @Inject
-    public ClientController(RepositoryClient repository, LoggerService loggerService)
+    public ListClientController(ClientContext context, RepositoryClient repository)
     {
+        this.clientContext = context;
         this.repositoryClient = repository;
-        this.loggerService = loggerService;
     }
 
     @FXML
     private void initialize() throws SQLException
     {
-        this.clientRoot.getChildren().remove(this.clientEdit);
-        this.clientList.setPrefWidth(1000);
-
-        System.out.println("Children " + this.clientRoot.getChildren());
-
         this.initializeTableView();
-        this.observableList = FXCollections.observableList(this.repositoryClient.getAll());
-        this.clientList.setItems(this.observableList);
+        List<Client> list = this.repositoryClient.getAll();
+        this.clientContext.setClientList(FXCollections.observableList(list));
+        this.tableClient.setItems(this.clientContext.clientListProperty());
     }
 
     private void initializeTableView()
     {
+        this.tableClient.setRowFactory(tv -> {
+            TableRow<Client> tr = new TableRow<>();
+            tr.setOnMouseClicked(mouseEvent -> {
+                if (mouseEvent.getClickCount() == 2) {
+                    this.clientContext.setClient(Optional.of(tr.getItem()));
+                }
+            });
+            return tr;
+        });
+
         this.tableColumnId.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().idProperty());
 
         this.tableColumnName.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().firstNameProperty());
@@ -73,28 +81,5 @@ public class ClientController
         this.tableColumnNif.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nifProperty().getValue().nifProperty());
 
         this.tableColumnEmail.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().emailProperty());
-
-        this.clientList.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        this.addEditClientView();
-                    } else {
-                        this.removeEditClientView();
-                    }
-                }
-        );
-    }
-
-    private void addEditClientView()
-    {
-        if (!this.clientRoot.getChildren().contains(this.clientEdit)) {
-            this.clientRoot.getChildren().add(this.clientEdit);
-        }
-    }
-
-    private void removeEditClientView() {
-        if (this.clientRoot.getChildren().contains(this.clientEdit)) {
-            this.clientRoot.getChildren().remove(this.clientEdit);
-        }
     }
 }

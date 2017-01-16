@@ -1,53 +1,57 @@
 package imecorpa.controllers;
 
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
+import imecorpa.app.client.ClientController;
 import imecorpa.configuration.Configuration;
 import imecorpa.configuration.View;
-import javafx.event.ActionEvent;
+import imecorpa.events.ChangeViewEvent;
+import imecorpa.model.users.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import imecorpa.App;
 
 import javax.inject.Inject;
 import java.io.IOException;
 
-public class MainController {
+public class MainController
+{
     @FXML
-    private TextField propertyName;
-
-    @FXML
-    private TextField propertyValue;
-
-    @FXML
-    private BorderPane idPane;
+    private BorderPane mainPane;
 
     private Configuration configuration;
 
+    private EventBus eventBus;
+
     @Inject
-    public MainController(Configuration configuration) throws IOException {
+    public MainController(Configuration configuration, EventBus eventBus) throws IOException {
         this.configuration = configuration;
+        this.eventBus = eventBus;
     }
 
-    public void addProperty(MouseEvent mouseEvent) {
-        configuration.setValue(propertyName.getText(), propertyValue.getText());
+    @Subscribe
+    public void selectView(ChangeViewEvent event) throws IOException {
+        switch (event.getView()) {
+            case ListClientView:
+                this.showListClientView();
+                break;
+            default:
+                break;
+        }
     }
 
-    public void loadProperty(MouseEvent mouseEvent) {
-        String value = configuration.getValue(propertyName.getText());
-        propertyValue.setText(value);
-    }
-
-    public void activeClient(ActionEvent actionEvent) throws IOException {
+    public void showListClientView() throws IOException {
         FXMLLoader loader = App.getFxmlLoader(View.ClientView);
+        ClientController controller = loader.getController();
 
-        this.idPane.setCenter(loader.load());
+        this.mainPane.setCenter(loader.load());
     }
 
-    public void activeProvider(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = App.getFxmlLoader(View.ProviderView);
+    public void showDataClientView(Client client) throws IOException {
+        FXMLLoader loader = App.getFxmlLoader(View.ClientView);
+        ClientController controller = loader.getController();
 
-        this.idPane.setCenter(loader.load());
+        this.mainPane.setCenter(loader.load());
     }
 }

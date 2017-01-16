@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-
-<BorderPane fx:id="idPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="imecorpa.controllers.MainController">
+<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="imecorpa.controllers.MainController">
     <top>
-        <HBox fillHeight="false" prefHeight="50.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
-            <fx:define>
-                <ToggleGroup fx:id="myToggleGroup" />
-            </fx:define>
-            <children>
-                <ToggleButton layoutX="44.0" mnemonicParsing="false" onAction="#activeClient" selected="true" text="%button.client">
-               <toggleGroup>
-                  <ToggleGroup fx:id="myToggleGroup" />
-               </toggleGroup></ToggleButton>
-                <ToggleButton layoutY="1.0" mnemonicParsing="false" onAction="#activeProvider" text="%button.provider" toggleGroup="$myToggleGroup" />
-            </children>
-        </HBox>
+        <fx:include source="MenuView.fxml" />
     </top>
     <left>
         <fx:include source="AddressView.fxml" />

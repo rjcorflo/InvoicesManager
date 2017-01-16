@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface RepositoryClient
 {
-    public int put(Client client) throws SQLException;
-    public int delete(Client client) throws SQLException;
-    public Client getById(int id) throws SQLException;
-    public Client getByIdFactura(int idFactura);
-    public List<Client> getAll() throws SQLException;
+    int put(Client client) throws SQLException;
+    int delete(Client client) throws SQLException;
+    Client getById(int id) throws SQLException;
+    Client getByIdFactura(int idFactura);
+    List<Client> getAll() throws SQLException;
 }

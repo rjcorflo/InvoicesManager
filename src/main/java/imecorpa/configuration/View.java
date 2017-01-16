@@ -9,6 +9,8 @@ public enum View
     InformationView("/views/InformationView.fxml"),
     SearchView("/views/SearchView.fxml"),
     ClientView("/views/clients/ClientView.fxml"),
+    ListClientView("/views/clients/ListClientView.fxml"),
+    EditClientView("/views/clients/EditClientView.fxml"),
     ProviderView("/views/providers/ProviderView.fxml");
 
     private String location;
