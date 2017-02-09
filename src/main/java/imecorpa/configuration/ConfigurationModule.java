@@ -9,6 +9,6 @@ public class ConfigurationModule extends AbstractModule
 {
     @Override
     protected void configure() {
-        bind(Configuration.class).to(FileConfiguration.class).asEagerSingleton();
+        bind(Configuration.class).to(InMemoryConfiguration.class).asEagerSingleton();
     }
 }
