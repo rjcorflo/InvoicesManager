@@ -3,5 +3,6 @@
 <?import javafx.scene.layout.HBox?>
 
 <HBox fx:id="clientRoot" alignment="CENTER" minHeight="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.app.client.ClientController">
-   <fx:include fx:id="listClient" source="ListClientView.fxml" />
+   <fx:include source="menu/MenuClientView.fxml"/>
+   <fx:include fx:id="listClient" source="data/list/ListClientView.fxml" />
 </HBox>

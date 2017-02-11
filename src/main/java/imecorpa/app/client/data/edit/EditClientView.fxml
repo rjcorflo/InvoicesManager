@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="clientEdit" minWidth="500.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.app.client.EditClientController">
+<VBox fx:id="clientEdit" minWidth="500.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.app.client.data.edit.EditClientController">
 <TitledPane alignment="TOP_LEFT" collapsible="false" minHeight="700.0" prefWidth="500" text="Usuario" GridPane.columnIndex="1">
     <content>
         <GridPane hgap="20.0" vgap="10.0">

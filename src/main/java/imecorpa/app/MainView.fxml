@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.BorderPane?>
+<?import imecorpa.app.menu.MenuControl?>
 <BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="imecorpa.app.MainController">
     <top>
-        <fx:include source="MenuView.fxml" />
+        <MenuControl fx:id="menu" />
     </top>
     <left>
-        <fx:include source="AddressView.fxml" />
     </left>
     <center>
-        <fx:include source="clients/ClientView.fxml" />
+        <fx:include source="client/ClientView.fxml" />
     </center>
     <right>
-        <fx:include source="SearchView.fxml" />
     </right>
     <bottom>
-        <fx:include source="InformationView.fxml" />
+        <fx:include source="information/InformationView.fxml" />
     </bottom>
 </BorderPane>

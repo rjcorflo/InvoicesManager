@@ -5,13 +5,13 @@ package imecorpa.configuration;
  */
 public enum View
 {
-    MainView("/views/MainView.fxml"),
-    InformationView("/views/InformationView.fxml"),
+    MainView("/imecorpa/app/MainView.fxml"),
+    InformationView("/imecorpa/app/information/InformationView.fxml"),
     SearchView("/views/SearchView.fxml"),
-    ClientView("/views/clients/ClientView.fxml"),
-    ListClientView("/views/clients/ListClientView.fxml"),
-    EditClientView("/views/clients/EditClientView.fxml"),
-    ProviderView("/views/providers/ProviderView.fxml");
+    ClientView("/imecorpa/app/client/ClientView.fxml"),
+    ListClientView("/imecorpa/app/client/data/list/ListClientView.fxml"),
+    EditClientView("/imecorpa/app/client/data/edit/EditClientView.fxml"),
+    ProviderView("/imecorpa/app/provider/ProviderView.fxml");
 
     private String location;
 

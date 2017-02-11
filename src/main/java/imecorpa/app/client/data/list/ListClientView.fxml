@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="clientList" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.app.client.ListClientController">
+<VBox fx:id="clientList" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imecorpa.app.client.data.list.ListClientController">
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>
          <GridPane HBox.hgrow="ALWAYS">

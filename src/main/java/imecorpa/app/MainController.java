@@ -2,16 +2,17 @@ package imecorpa.app;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import imecorpa.app.client.ClientContext;
-import imecorpa.app.client.ClientController;
+import imecorpa.App;
+import imecorpa.app.menu.MenuControl;
 import imecorpa.configuration.Configuration;
 import imecorpa.configuration.View;
 import imecorpa.events.ChangeViewEvent;
 import imecorpa.model.users.Client;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
-import imecorpa.App;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -20,6 +21,9 @@ public class MainController
 {
     @FXML
     private BorderPane mainPane;
+
+    @FXML
+    private MenuControl menu;
 
     private Configuration configuration;
 
@@ -34,6 +38,21 @@ public class MainController
     @FXML
     private void initialize() {
         eventBus.register(this);
+
+        menu.selectedViewProperty().addListener(this::addSelectedViewProperty);
+    }
+
+    private void addSelectedViewProperty(ObservableValue<? extends View> observable, View oldValue, View newValue) {
+        if (newValue != null) {
+            System.out.println(" aaa a a " + newValue.toString());
+
+            FXMLLoader loader = App.getFxmlLoader(newValue);
+            try {
+                this.mainPane.setCenter(loader.load());
+            } catch (IOException e) {
+
+            }
+        }
     }
 
     @Subscribe
@@ -54,7 +73,6 @@ public class MainController
 
     public void showDataClientView(Client client) throws IOException {
         FXMLLoader loader = App.getFxmlLoader(View.ClientView);
-        ClientController controller = loader.getController();
         this.mainPane.setCenter(loader.load());
 
     }

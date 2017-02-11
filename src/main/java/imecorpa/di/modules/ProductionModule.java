@@ -2,7 +2,6 @@ package imecorpa.di.modules;
 
 import com.google.common.eventbus.EventBus;
 import com.google.inject.AbstractModule;
-import imecorpa.app.client.ClientModule;
 import imecorpa.configuration.ConfigurationModule;
 import imecorpa.di.services.logger.LoggerModule;
 import imecorpa.di.services.translator.TranslatorModule;
@@ -24,6 +23,5 @@ public class ProductionModule extends AbstractModule
         install(new LoggerModule());
         install(new TranslatorModule());
         install(new RepositoryModule());
-        install(new ClientModule());
     }
 }

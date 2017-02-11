@@ -28,28 +28,13 @@ public class ClientController
      */
     private LoggerService loggerService;
 
-    /**
-     * Context for client controllers and views
-     */
-    private ClientContext clientContext;
-
     @Inject
-    public ClientController(ClientContext context, LoggerService loggerService) {
-        this.clientContext = context;
+    public ClientController(LoggerService loggerService) {
         this.loggerService = loggerService;
     }
 
     @FXML
     private void initialize() {
-        clientContext.setClient(Optional.empty());
-
-        clientContext.clientProperty().addListener((observable, oldValue, newValue) -> {
-            try {
-                this.showEditClientView(newValue);
-            } catch (IOException e) {
-                loggerService.addError(e.getMessage());
-            }
-        });
     }
 
     /**
@@ -69,25 +54,9 @@ public class ClientController
      * @param client The client to edit
      * @throws IOException If there is a problem instantiating FXML
      */
-    public void showEditClientView(Optional<Client> client) throws IOException {
-        // Set client in context
-        clientContext.setClient(client);
-
-        // Load edit view if necessary
-        if (client.isPresent()) {
-            FXMLLoader loader = App.getFxmlLoader(View.EditClientView);
-            Pane view = loader.load();
-            if (clientRoot.getChildren().stream().noneMatch(node -> view.getId().equals(node.getId()))) {
-                clientRoot.getChildren().add(view);
-            }
-        } else {
-            // Remove edit view if necessary
-            clientRoot.getChildren().removeIf(node -> node.getId().equals("clientEdit"));
-        }
-
+    public void showEditClientView(Client client) throws IOException {
     }
 
     public void showDataClientView(Optional<Client> client) {
-
     }
 }

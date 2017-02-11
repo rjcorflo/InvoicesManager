@@ -1,4 +1,4 @@
-package imecorpa.app;
+package imecorpa.app.menu;
 
 import com.google.common.eventbus.EventBus;
 import imecorpa.configuration.View;

@@ -1,17 +1,22 @@
-package imecorpa.app.client;
+package imecorpa.app.client.data.list;
 
+import imecorpa.App;
+import imecorpa.configuration.View;
 import imecorpa.model.repositories.RepositoryClient;
 import imecorpa.model.users.Client;
 import javafx.beans.binding.Bindings;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -43,16 +48,9 @@ public class ListClientController
      */
     private RepositoryClient repositoryClient;
 
-    /**
-     * Context for client controllers and views.
-     */
-    private ClientContext clientContext;
-
-
     @Inject
-    public ListClientController(ClientContext context, RepositoryClient repository)
+    public ListClientController(RepositoryClient repository)
     {
-        this.clientContext = context;
         this.repositoryClient = repository;
     }
 
@@ -61,8 +59,6 @@ public class ListClientController
     {
         this.initializeTableView();
         List<Client> list = this.repositoryClient.getAll();
-        this.clientContext.setClientList(FXCollections.observableList(list));
-        this.tableClient.setItems(this.clientContext.clientListProperty());
     }
 
     private void initializeTableView()
@@ -72,7 +68,6 @@ public class ListClientController
             TableRow<Client> tr = new TableRow<>();
             tr.setOnMouseClicked(mouseEvent -> {
                 if (mouseEvent.getClickCount() == 2) {
-                    this.clientContext.setClient(Optional.of(tr.getItem()));
                 }
             });
             return tr;
@@ -93,12 +88,10 @@ public class ListClientController
     @FXML
     private void addClient(ActionEvent actionEvent) {
         Optional<Client> newClient = Optional.of(new Client());
-        this.clientContext.setClient(newClient);
     }
 
     @FXML
-    private void editClient(ActionEvent actionEvent) {
+    private void editClient(ActionEvent actionEvent) throws IOException {
         Optional<Client> selectedClient = Optional.ofNullable(this.tableClient.getSelectionModel().getSelectedItem());
-        this.clientContext.setClient(selectedClient);
     }
 }
