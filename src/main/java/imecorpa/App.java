@@ -3,7 +3,7 @@ package imecorpa;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import imecorpa.configuration.View;
+import imecorpa.app.Main;
 import imecorpa.di.modules.ProductionModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = App.getFxmlLoader(View.MainView).load();
+        Parent root = new Main().getView();//new Main();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.setMaximized(true);
@@ -52,9 +52,8 @@ public class App extends Application {
         App.locale = locale;
     }
 
-    public static FXMLLoader getFxmlLoader(View view) {
+    public static FXMLLoader getFxmlLoader() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(App.class.getResource(view.getLocation()));
         loader.setResources(ResourceBundle.getBundle("bundles.localization.strings", App.getLocale()));
         loader.setControllerFactory(injector::getInstance);
 

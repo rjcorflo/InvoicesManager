@@ -11,6 +11,6 @@ public class RepositoryModule extends AbstractModule
 {
     @Override
     protected void configure() {
-        bind(RepositoryClient.class).to(RepositoryClientSqlite.class).asEagerSingleton();
+        bind(RepositoryClient.class).to(RepositoryClientInMemory.class).asEagerSingleton();
     }
 }

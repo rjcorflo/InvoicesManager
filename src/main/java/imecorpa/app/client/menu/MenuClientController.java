@@ -1,10 +1,6 @@
 package imecorpa.app.client.menu;
 
 import com.google.common.eventbus.EventBus;
-import imecorpa.configuration.View;
-import imecorpa.events.ChangeViewEvent;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 
 import javax.inject.Inject;
 import java.io.IOException;

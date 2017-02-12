@@ -1,19 +1,17 @@
 package imecorpa.app.client.data.list;
 
-import imecorpa.App;
-import imecorpa.configuration.View;
 import imecorpa.model.repositories.RepositoryClient;
 import imecorpa.model.users.Client;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -59,6 +57,7 @@ public class ListClientController
     {
         this.initializeTableView();
         List<Client> list = this.repositoryClient.getAll();
+        this.tableClient.setItems(FXCollections.observableArrayList(list));
     }
 
     private void initializeTableView()

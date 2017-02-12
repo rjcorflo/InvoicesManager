@@ -1,16 +1,9 @@
 package imecorpa.app.client;
 
-import imecorpa.App;
-import imecorpa.configuration.View;
 import imecorpa.di.services.logger.LoggerService;
 import imecorpa.model.users.Client;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -43,9 +36,6 @@ public class ClientController
      * @throws IOException
      */
     public void showListClientView() throws IOException {
-        FXMLLoader loader = App.getFxmlLoader(View.ListClientView);
-        clientRoot.getChildren().clear();
-        clientRoot.getChildren().add(loader.load());
     }
 
     /**
