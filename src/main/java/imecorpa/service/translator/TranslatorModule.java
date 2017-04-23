@@ -1,4 +1,4 @@
-package imecorpa.di.services.translator;
+package imecorpa.service.translator;
 
 import com.google.inject.AbstractModule;
 

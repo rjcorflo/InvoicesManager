@@ -1,11 +1,11 @@
-package imecorpa.di.services.logger;
+package imecorpa.service.logger;
 
 import com.google.inject.AbstractModule;
 
 /**
  * Guice Module for Logger Service.
  */
-public class LoggerModule extends AbstractModule
+public class DevLoggerModule extends AbstractModule
 {
     @Override
     protected void configure() {
