@@ -72,3 +72,6 @@ hs_err_pid*
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
+/src/main/resources/configuration/*
+!/src/main/resources/configuration/.gitkeep
