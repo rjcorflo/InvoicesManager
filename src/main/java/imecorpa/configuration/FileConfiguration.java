@@ -6,16 +6,16 @@ import java.net.URL;
 import java.util.Properties;
 
 class FileConfiguration implements Configuration {
-    private Properties prop = new Properties();
+    private Properties properties = new Properties();
 
-    private File propFile;
+    private File propertiesFile;
 
     FileConfiguration() throws URISyntaxException {
         URL url = getClass().getResource("/configuration/config.properties");
-        propFile = new File(url.toURI());
-        if (!propFile.exists()) {
+        this.propertiesFile = new File(url.toURI());
+        if (!this.propertiesFile.exists()) {
             try {
-                propFile.createNewFile();
+                this.propertiesFile.createNewFile();
             } catch (Exception e) {
                 System.out.println("Error loading");
             }
@@ -24,61 +24,48 @@ class FileConfiguration implements Configuration {
         this.load();
     }
 
+    @Override
     public void setValue(String name, String value) {
-        prop.setProperty(name, value);
+        this.properties.setProperty(name, value);
         this.store();
     }
 
-    public String getValue(String name) {
-        this.load();
-        return prop.getProperty(name);
+    @Override
+    public boolean hasValue(String name) {
+        return this.properties.containsKey(name);
     }
 
+    @Override
+    public String getValue(String name) {
+        this.load();
+        return this.properties.getProperty(name);
+    }
+
+    @Override
     public String getValue(String name, String defaultValue) {
         this.load();
-        return prop.getProperty(name, defaultValue);
+        return this.properties.getProperty(name, defaultValue);
     }
 
     private void load() {
-        InputStream input = null;
-
-        try {
-            input = new FileInputStream(propFile);
-
-            // load a properties file
-            prop.load(input);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        try (InputStream input = new FileInputStream(this.propertiesFile)) {
+            // Load a properties file
+            this.properties.load(input);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     private void store() {
-        OutputStream output = null;
-        try {
-            output = new FileOutputStream(propFile);
-
+        try (FileOutputStream output = new FileOutputStream(this.propertiesFile)) {
             // Save properties to project root folder
-            prop.store(output, null);
-
-        } catch (IOException io) {
-            io.printStackTrace();
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
+            this.properties.store(output, null);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
