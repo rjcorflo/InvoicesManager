@@ -1,10 +1,29 @@
 package imecorpa.configuration;
 
 /**
- * Created by Solus on 02/01/2017.
+ * 
  */
 public interface Configuration {
-    public void setValue(String name, String value);
-    public String getValue(String name);
-    public String getValue(String name, String defaultValue);
+    /**
+     *
+     *
+     * @param name
+     * @param value
+     */
+    void setValue(String name, String value);
+
+    /**
+     *
+     * @param name
+     * @return
+     */
+    String getValue(String name);
+
+    /**
+     *
+     * @param name
+     * @param defaultValue
+     * @return
+     */
+    String getValue(String name, String defaultValue);
 }

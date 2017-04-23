@@ -1,4 +1,4 @@
-package imecorpa.di.services.logger;
+package imecorpa.service.logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,12 +1,9 @@
-package imecorpa.di.services.translator;
+package imecorpa.service.translator;
 
 import imecorpa.App;
 
 import java.util.ResourceBundle;
 
-/**
- * Created by Solus on 05/01/2017.
- */
 class TranslatorResource implements TranslatorService
 {
     private ResourceBundle resourceBundle;

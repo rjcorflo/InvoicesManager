@@ -6,25 +6,28 @@ import java.net.URL;
 import java.util.Properties;
 
 /**
- * Created by Solus on 02/01/2017.
+ * Simple {@link Configuration} implementation.
+ *
+ * Data only is stored during execution.
  */
 class InMemoryConfiguration implements Configuration
 {
-    private Properties prop = new Properties();
+    private Properties properties = new Properties();
 
     InMemoryConfiguration() throws URISyntaxException {
-        prop.setProperty("databaseUrl", "C:\\Workspace\\JavaProjects\\libraries\\InvoicesManagerDatabase\\imecorpa.db");
+        this.setValue("databaseUrl", "C:\\Workspace\\JavaProjects\\libraries\\InvoicesManagerDatabase\\imecorpa.db");
+        this.setValue("databaseUrl", "");
     }
 
     public void setValue(String name, String value) {
-        prop.setProperty(name, value);
+        this.properties.setProperty(name, value);
     }
 
     public String getValue(String name) {
-        return prop.getProperty(name);
+        return this.properties.getProperty(name);
     }
 
     public String getValue(String name, String defaultValue) {
-        return prop.getProperty(name, defaultValue);
+        return this.properties.getProperty(name, defaultValue);
     }
 }

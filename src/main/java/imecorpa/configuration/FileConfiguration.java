@@ -1,17 +1,11 @@
 package imecorpa.configuration;
 
-import imecorpa.configuration.Configuration;
-
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Properties;
 
-/**
- * Created by Solus on 02/01/2017.
- */
-class FileConfiguration implements Configuration
-{
+class FileConfiguration implements Configuration {
     private Properties prop = new Properties();
 
     private File propFile;
@@ -45,7 +39,7 @@ class FileConfiguration implements Configuration
         return prop.getProperty(name, defaultValue);
     }
 
-    protected void load() {
+    private void load() {
         InputStream input = null;
 
         try {
@@ -66,7 +60,7 @@ class FileConfiguration implements Configuration
         }
     }
 
-    protected void store() {
+    private void store() {
         OutputStream output = null;
         try {
             output = new FileOutputStream(propFile);
