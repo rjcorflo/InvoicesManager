@@ -1,8 +1,8 @@
 package imecorpa.app.information;
 
-import imecorpa.di.services.logger.LoggerService;
+import imecorpa.service.logger.LoggerService;
 import imecorpa.model.users.Client;
-import imecorpa.di.services.logger.Log;
+import imecorpa.service.logger.Log;
 import imecorpa.model.repositories.RepositoryClient;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;

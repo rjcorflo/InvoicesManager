@@ -1,7 +1,7 @@
 package imecorpa.app.menu;
 
 import com.google.common.eventbus.EventBus;
-import imecorpa.events.ChangeViewEvent;
+import imecorpa.event.ChangeViewEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

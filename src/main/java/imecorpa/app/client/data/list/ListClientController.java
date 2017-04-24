@@ -1,6 +1,7 @@
 package imecorpa.app.client.data.list;
 
 import imecorpa.model.repositories.RepositoryClient;
+import imecorpa.model.repositories.exception.RepositoryException;
 import imecorpa.model.users.Client;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -53,7 +54,7 @@ public class ListClientController
     }
 
     @FXML
-    private void initialize() throws SQLException
+    private void initialize() throws RepositoryException
     {
         this.initializeTableView();
         List<Client> list = this.repositoryClient.getAll();

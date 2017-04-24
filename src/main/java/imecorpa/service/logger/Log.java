@@ -19,7 +19,7 @@ public class Log
 
         private int codigoLog;
 
-        private Type(int codigoLog) {
+        Type(int codigoLog) {
             this.codigoLog = codigoLog;
         }
 

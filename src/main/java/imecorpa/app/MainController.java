@@ -3,7 +3,7 @@ package imecorpa.app;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import imecorpa.configuration.Configuration;
-import imecorpa.events.ChangeViewEvent;
+import imecorpa.event.ChangeViewEvent;
 import imecorpa.model.users.Client;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;

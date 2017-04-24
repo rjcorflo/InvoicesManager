@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 import imecorpa.app.Main;
+import imecorpa.di.modules.DevelopmentModule;
 import imecorpa.di.modules.ProductionModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,26 +15,27 @@ import javafx.stage.Stage;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Initial Application
+ */
 public class App extends Application {
     private static Injector injector;
 
     private static Locale locale;
 
     @Override
-    public void init() throws Exception {
+    public void init() {
         // Init injector
-        Module module = new ProductionModule();
+        Module module = new DevelopmentModule();
         App.injector = Guice.createInjector(module);
 
         // Init default locale
         App.setLocale(Locale.getDefault());
-
-        System.out.println("Nueva");
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = new Main().getView();//new Main();
+    public void start(Stage primaryStage) {
+        Parent root = new Main().getView();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.setMaximized(true);

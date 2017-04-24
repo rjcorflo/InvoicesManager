@@ -1,6 +1,6 @@
 package imecorpa.app.client;
 
-import imecorpa.di.services.logger.LoggerService;
+import imecorpa.service.logger.LoggerService;
 import imecorpa.model.users.Client;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
