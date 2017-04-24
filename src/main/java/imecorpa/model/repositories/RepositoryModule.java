@@ -5,7 +5,7 @@ import imecorpa.model.repositories.RepositoryClient;
 import imecorpa.model.repositories.RepositoryClientSqlite;
 
 /**
- * Created by Solus on 03/01/2017.
+ * Guice Module for Logger Service.
  */
 public class RepositoryModule extends AbstractModule
 {

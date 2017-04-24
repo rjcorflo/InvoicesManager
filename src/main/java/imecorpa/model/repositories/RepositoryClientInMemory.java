@@ -5,6 +5,7 @@ import com.j256.ormlite.dao.DaoManager;
 import imecorpa.database.connectivity.DatabaseConnection;
 import imecorpa.database.data.ClientDao;
 import imecorpa.model.NIF;
+import imecorpa.model.repositories.exception.RepositoryException;
 import imecorpa.model.users.Client;
 import imecorpa.model.users.User;
 
@@ -74,14 +75,14 @@ class RepositoryClientInMemory implements RepositoryClient
     }
 
     @Override
-    public int put(Client client) throws SQLException {
+    public int put(Client client) {
         this.listClients.add(client);
 
         return this.listClients.indexOf(client);
     }
 
     @Override
-    public int delete(Client client) throws SQLException {
+    public int delete(Client client) {
         int index = this.listClients.indexOf(client);
         if (index < 0) {
             this.listClients.remove(client);
@@ -91,7 +92,7 @@ class RepositoryClientInMemory implements RepositoryClient
     }
 
     @Override
-    public Client getById(int id) throws SQLException {
+    public Client getById(int id) {
         return this.listClients.stream().filter((client) -> client.getId() == id).collect(Collectors.toList()).get(0);
     }
 
@@ -101,7 +102,7 @@ class RepositoryClientInMemory implements RepositoryClient
     }
 
     @Override
-    public List<Client> getAll() throws SQLException {
+    public List<Client> getAll() {
         return this.listClients;
     }
 }
