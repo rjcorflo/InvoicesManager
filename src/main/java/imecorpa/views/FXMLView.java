@@ -7,15 +7,14 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 /**
- * Created by RJ Corchero on 12/02/2017.
+ * Wrapper around views and controllers for easy instantiation.
  */
-public class FXMLView
-{
+public class FXMLView {
     private Parent view;
 
     private FXMLLoader loader = App.getFxmlLoader();
 
-    public  FXMLView() {
+    public FXMLView() {
         this.loader = App.getFxmlLoader();
     }
 
@@ -39,5 +38,9 @@ public class FXMLView
 
     public <T> T getController() {
         return this.loader.getController();
+    }
+
+    public String getId() {
+        return this.getView().getId();
     }
 }
