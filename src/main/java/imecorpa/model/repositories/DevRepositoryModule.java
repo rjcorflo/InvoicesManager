@@ -3,7 +3,7 @@ package imecorpa.model.repositories;
 import com.google.inject.AbstractModule;
 
 /**
- * Created by Solus on 03/01/2017.
+ * Guice Development Module for Logger Service.
  */
 public class DevRepositoryModule extends AbstractModule
 {
