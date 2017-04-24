@@ -3,7 +3,7 @@ package imecorpa.service.translator;
 import com.google.inject.AbstractModule;
 
 /**
- * Guice Devlopment Module for Translator Service.
+ * Guice Development Module for Translator Service.
  */
 public class DevTranslatorModule extends AbstractModule {
     @Override

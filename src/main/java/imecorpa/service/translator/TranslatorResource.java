@@ -5,7 +5,7 @@ import imecorpa.App;
 import java.util.ResourceBundle;
 
 /**
- * Implements the translation of sttring using a Resource Bundle.
+ * Implements the translation of strings using a Resource Bundle.
  */
 class TranslatorResource implements TranslatorService
 {
