@@ -15,11 +15,11 @@ class TranslatorResource implements TranslatorService
     }
 
     @Override
-    public String translate(String key) {
+    public String translate(String key, Object... args) {
         if (resourceBundle == null || !App.getLocale().equals(resourceBundle.getLocale())) {
             resourceBundle = ResourceBundle.getBundle("bundles.localization.strings", App.getLocale());
         }
 
-        return resourceBundle.getString(key);
+        return String.format(resourceBundle.getString(key), args);
     }
 }
